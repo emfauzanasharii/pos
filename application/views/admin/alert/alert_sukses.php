@@ -34,15 +34,25 @@
     <div class="container">
 
         <!-- Page Heading -->
+<?php $a=$kembalian; ?>
         <div class="row">
             <div class="col-lg-12">
-                <div class="alert alert-success">
-                    <strong>Transaksi Berhasil Silahkan Cetak Faktur Penjualan!</strong>
-                    <a class="btn btn-default" href="<?php echo base_url().'admin/penjualan'?>"><span class="fa fa-backward"></span>Kembali</a>
-                    <a class="btn btn-info" href="<?php echo base_url().'admin/penjualan/cetak_faktur'?>" target="_blank"><span class="fa fa-print"></span>Cetak</a>
+                <div class="alert alert-danger">
+                    <h4>Kembalian Uang <b>Rp. <?php echo $a; ?></b></h4>
+                    
                 </div>
             </div>
         </div>
+          <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-success">
+                    <strong>Transaksi Berhasil Silahkan Cetak Faktur Penjualan!</strong>
+                    <a class="btn btn-danger" href="<?php echo base_url().'admin/penjualan'?>"><span class="fa fa-backward"></span> Kembali</a>
+                    <a class="btn btn-info" href="<?php echo base_url().'admin/penjualan/cetak_faktur'?>" ><span class="fa fa-print"></span> Cetak</a>
+                </div>
+            </div>
+        </div>
+
         <!-- /.row -->
         <!-- Projects Row -->
        
@@ -53,14 +63,9 @@
         <hr>
 
         <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p style="text-align:center;">Copyright &copy; <?php echo date('Y');?> by Mahakarya Promosindo</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
+       <?php 
+        $this->load->view("admin/v_footer");
+        ?>
 
     </div>
     <!-- /.container -->
@@ -77,7 +82,20 @@
     <script src="<?php echo base_url().'assets/js/moment.js'?>"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap-datetimepicker.min.js'?>"></script>
     
-    
+    <script type="text/javascript">
+        document.onkeydown = function(teziger){
+   switch(teziger.keyCode){
+      case 13:   // KeyCode tombol Enter
+      window.location='<?php echo base_url().'admin/penjualan/cetak_faktur'?>'
+      break;
+      // Menambah fungsi shortcut lain
+      case 8:    // KeyCode tombol backspace
+      window.location='<?php echo base_url().'admin/penjualan'?>';
+      break;
+   }
+   teziger.preventDefault();    // Menghapus fungsi default tombol
+}
+    </script>
     
 </body>
 

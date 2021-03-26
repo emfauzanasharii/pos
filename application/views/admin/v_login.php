@@ -18,12 +18,12 @@
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-wrapper">
-			        <div class="box" style="margin-top: 250px;">
+			        <div class="box" style="margin-top: 130px;">
 			            <div class="content-wrap">
 			                <img width="310px" src="<?php echo base_url().'assets/img/logo.png'?>"/>
 			                <p><?php echo $this->session->flashdata('msg');?></p>
 	                        <hr/>
-	                        <form action="<?php echo base_url().'administrator/cekuser'?>" method="post">
+	                        <form action="<?php echo base_url().'AuthLogin/cekuser'?>" method="post">
 	                        	<input class="form-control" type="text" name="username" placeholder="Username" required>
 				                <input class="form-control" type="password" name="password" placeholder="Password" style="margin-bottom:1px;" required>
 				                <div class="action">

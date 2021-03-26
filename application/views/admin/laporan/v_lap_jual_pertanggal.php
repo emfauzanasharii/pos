@@ -41,7 +41,8 @@
         <th>Satuan</th>
         <th>Harga Jual</th>
         <th>Qty</th>
-        <th>Diskon</th>
+        <th>Harpok</th>
+        <th>laba</th>
         <th>SubTotal</th>
     </tr>
 </thead>
@@ -61,6 +62,9 @@ $no=0;
         $qty=$i['d_jual_qty'];
         $diskon=$i['d_jual_diskon'];
         $total=$i['d_jual_total'];
+        $harpok=$i['d_jual_barang_harpok'];
+        $laba=($harjul-$harpok)*$qty;
+
 ?>
     <tr>
         <td style="text-align:center;"><?php echo $no;?></td>
@@ -71,7 +75,8 @@ $no=0;
         <td style="text-align:left;"><?php echo $satuan;?></td>
         <td style="text-align:right;"><?php echo 'Rp '.number_format($harjul);?></td>
         <td style="text-align:center;"><?php echo $qty;?></td>
-        <td style="text-align:right;"><?php echo 'Rp '.number_format($diskon);?></td>
+        <td style="text-align:right;"><?php echo 'Rp '.number_format($harpok);?></td>
+        <td style="text-align:right;"><?php echo 'Rp '.number_format($laba);?></td>
         <td style="text-align:right;"><?php echo 'Rp '.number_format($total);?></td>
     </tr>
 <?php }?>
@@ -81,6 +86,10 @@ $no=0;
     <tr>
         <td colspan="9" style="text-align:center;"><b>Total</b></td>
         <td style="text-align:right;"><b><?php echo 'Rp '.number_format($b['total']);?></b></td>
+    </tr>
+    <tr>
+        <td colspan="9" style="text-align:center;"><b>Laba</b></td>
+        <td style="text-align:right;"><b><?php echo 'Rp '.number_format($b['total']-$b['total_harpok']);?></b></td>
     </tr>
 </tfoot>
 </table>

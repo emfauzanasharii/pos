@@ -166,7 +166,7 @@ $nomor=1;
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#mydata').DataTable();
+            $('#tbl_laporan').DataTable();
         } );
     </script>
     

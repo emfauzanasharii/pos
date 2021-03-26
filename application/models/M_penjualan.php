@@ -36,6 +36,11 @@ class M_penjualan extends CI_Model{
 		}
 		return true;
 	}
+	function simpan_donasi($no_nota,$donasi){
+		$hsl=$this->db->query("INSERT INTO tbl_donasi (no_nota,donasi) VALUES ('$no_nota','$donasi')");
+		return $hsl;
+	}
+
 	function get_nofak(){
 		$q = $this->db->query("SELECT MAX(RIGHT(jual_nofak,6)) AS kd_max FROM tbl_jual WHERE DATE(jual_tanggal)=CURDATE()");
         $kd = "";
@@ -47,6 +52,7 @@ class M_penjualan extends CI_Model{
         }else{
             $kd = "000001";
         }
+        date_default_timezone_set('Asia/Jakarta');
         return date('dmy').$kd;
 	}
 
@@ -74,7 +80,7 @@ class M_penjualan extends CI_Model{
 
 	function cetak_faktur(){
 		$nofak=$this->session->userdata('nofak');
-		$hsl=$this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d/%m/%Y %H:%i:%s') AS jual_tanggal,jual_total,jual_jml_uang,jual_kembalian,jual_keterangan,d_jual_barang_nama,d_jual_barang_id,d_jual_barang_satuan,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak WHERE jual_nofak='$nofak'");
+		$hsl=$this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d/%m/%Y %H:%i:%s') AS jual_tanggal,jual_total,jual_jml_uang,jual_kembalian,jual_keterangan,d_jual_barang_nama,d_jual_barang_id,d_jual_barang_satuan,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total,donasi FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak left join tbl_donasi on jual_nofak=no_nota WHERE jual_nofak='$nofak'");
 		return $hsl;
 	}
 	

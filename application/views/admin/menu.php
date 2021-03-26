@@ -50,7 +50,7 @@
                     </li>
                     <?php }?>
                      <li>
-                        <a href="<?php echo base_url().'administrator/logout'?>"><span class="fa fa-sign-out"></span> Logout</a>
+                        <a href="<?php echo base_url().'AuthLogin/logout'?>"><span class="fa fa-sign-out"></span> Logout</a>
                     </li>
                 </ul>
 

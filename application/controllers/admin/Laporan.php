@@ -68,10 +68,23 @@ class Laporan extends CI_Controller{
 		$x['data']=$this->m_laporan->get_jual_pertahun($tahun);
 		$this->load->view('admin/laporan/v_lap_jual_pertahun',$x);
 	}
+	function donasi(){
+		$tahun=$this->input->post('thn');
+		$x['jml']=$this->m_laporan->get_total_donasi($tahun);
+		$x['data']=$this->m_laporan->get_donasi_pertahun($tahun);
+		$x['total']=$this->m_laporan->total_donasi($tahun);
+
+		$this->load->view('admin/laporan/v_laporan_donasi',$x);
+	}
 	function lap_laba_rugi(){
 		$bulan=$this->input->post('bln');
 		$x['jml']=$this->m_laporan->get_total_lap_laba_rugi($bulan);
 		$x['data']=$this->m_laporan->get_lap_laba_rugi($bulan);
 		$this->load->view('admin/laporan/v_lap_laba_rugi',$x);
 	}
+
+	function printnota(){
+		$x['data']=$this->m_laporan->nota();
+		$this->load->view('admin/v_printnota',$x);
+}
 }

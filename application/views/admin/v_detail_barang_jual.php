@@ -18,19 +18,17 @@
 		                <tbody>
 		                	<?php 
 							$no=0;
-                        foreach ($brg->result_array() as $a):
+                            $brg=json_decode($data);
+                        foreach ($brg as $a):
                             $no++;
-                            $id=$a['barang_id'];
-                            $nm=$a['barang_nama'];
-                            $satuan=$a['barang_satuan'];
-                            $harpok=$a['barang_harpok'];
-                            $harjul=$a['barang_harjul'];
-                            $harjul_grosir=$a['barang_harjul_grosir'];
-                            $stok=$a['barang_stok'];
-                            $min_stok=$a['barang_min_stok'];
-                            
-                            
-
+                            $id=$a->barang_id;
+                            $nm=$a->barang_nama;
+                            $satuan=$a->barang_satuan;
+                            $harpok=$a->barang_harpok;
+                            $harjul=$a->barang_harjul;
+                            $harjul_grosir=$a->barang_harjul_grosir;
+                            $stok=$a->barang_stok;
+                            $min_stok=$a->barang_min_stok;
 							 ?>
 						<tr>
 							<td style="text-align:center;"><?php echo $no;?></td>
@@ -49,8 +47,8 @@
                             <label style="font-size: 12px;">Diskon</label>
                             <input type="number" name="diskon" value="0" style="width: 100px;">
                             <label style="font-size: 12px;">QTY</label>
-                            <input type="number" step="0.1" name="qty" id="jumlah" max="<?php echo $stok; ?>" required style="width: 100px;">
-                                <button type="submit" class="btn btn-md btn-info" title="Pilih"><span class="fa fa-edit"></span> Pilih</button>
+                            <input type="number" step="0.001" name="qty" id="jumlah" value="1" max="<?php echo $stok; ?>" required style="width: 100px;">
+                                <button type="submit" class="btn btn-md btn-info" id="pilih" title="Pilih"><span class="fa fa-edit"></span> Pilih</button>
                             </form>
                             </td>
 		                 

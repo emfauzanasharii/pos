@@ -119,6 +119,15 @@
                             <a class="btn btn-sm btn-info" href="#lap_laba_rugi" data-toggle="modal"><span class="fa fa-print"></span> Print</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="text-align:center;vertical-align:middle">7</td>
+                        <td style="vertical-align:middle;">Laporan Donasi Per Tahun</td>
+                        <td style="text-align:center;">
+                            
+                            <a class="btn btn-sm btn-info" href="#donasi" data-toggle="modal"><span class="fa fa-print"></span> Print</a>
+                        </td>
+                    </tr>
+
               
                 </tbody>
             </table>
@@ -271,6 +280,42 @@
         
 
         <!--END MODAL-->
+         <!-- ============ MODAL ADD =============== -->
+
+         <div class="modal fade" id="donasi" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title" id="myModalLabel">Pilih Tahun</h3>
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/laporan/donasi'?>" target="_blank">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Tahun</label>
+                        <div class="col-xs-9">
+                                <select name="thn" class="selectpicker show-tick form-control" data-live-search="true" title="Pilih Tahun" data-width="80%" required/>
+                                <?php foreach ($jual_thn->result_array() as $t) {
+                                    $thn=$t['tahun'];
+                                ?>
+                                    <option><?php echo $thn;?></option>
+                                <?php }?>
+                                </select>
+                        </div>
+                    </div>
+                           
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                    <button class="btn btn-info"><span class="fa fa-print"></span> Cetak</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
 
         <hr>
 

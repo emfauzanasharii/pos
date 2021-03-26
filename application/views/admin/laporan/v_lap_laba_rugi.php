@@ -1,37 +1,38 @@
-<html lang="en" moznomarginboxes mozdisallowselectionprint>
+<?php 
+error_reporting(0);
+ ?>
+
+<html >
 <head>
     <title>Laporan Laba/rugi</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/laporan.css')?>"/>
-</head>
-<body onload="window.print()">
-<div id="laporan">
-<table align="center" style="width:900px; border-bottom:3px double;border-top:none;border-right:none;border-left:none;margin-top:5px;margin-bottom:20px;">
-<!--<tr>
-    <td><img src="<?php// echo base_url().'assets/img/kop_surat.png'?>"/></td>
-</tr>-->
-</table>
+    <!-- Bootstrap Core CSS -->
+    <link href="<?php echo base_url().'assets/css/bootstrap.min.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'assets/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'assets/css/font-awesome.css'?>" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/DataTables/datatables.min.css' ?>">
+    <link href="<?php echo base_url().'assets/css/4-col-portfolio.css'?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/DataTables/css/dataTables.bootstrap4.min.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/DataTables/css/jquery.dataTables.min.css' ?>">
+    <link href="<?php echo base_url().'assets/dist/css/bootstrap-select.css'?>" rel="stylesheet">
 
-<table border="0" align="center" style="width:800px; border:none;margin-top:5px;margin-bottom:0px;">
-<tr>
-    <td colspan="2" style="width:800px;paddin-left:20px;"><center><h4>LAPORAN LABA / RUGI </h4></center><br/></td>
-</tr>
-                       
-</table>
- 
-<table border="0" align="center" style="width:900px;border:none;">
-        <tr>
-            <th style="text-align:left"></th>
-        </tr>
-</table>
+
+<link href=" https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css" rel="stylesheet">
+   
+</head>
+<body>
+<div id="laporan">
 <?php 
-    $b=$jml->row_array();
-?>
-<table border="1" align="center" style="width:900px;margin-bottom:20px;">
+$row=$jml->row_array();
+ ?>
+
+ <h2 align="center">LAPORAN LABA/RUGI BULAN <?php echo $row['bulan']; ?></h2>
+
+<table id="mydata" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
 <thead>
-<tr>
-<th colspan="11" style="text-align:left;">Bulan : <?php echo $b['bulan'];?></th>
-</tr>
+
     <tr>
         <th style="width:50px;">No</th>
         <th>Tanggal</th>
@@ -59,6 +60,7 @@ $no=0;
         $qty=$i['d_jual_qty'];
         $diskon=$i['d_jual_diskon'];
         $untung_bersih=$i['untung_bersih'];
+        $laba+=$untung_bersih;
 ?>
     <tr>
         <td style="text-align:center;"><?php echo $no;?></td>
@@ -78,40 +80,38 @@ $no=0;
 
     <tr>
         <td colspan="9" style="text-align:center;"><b>Total Keuntungan</b></td>
-        <td style="text-align:right;"><b><?php echo 'Rp '.number_format($b['total']);?></b></td>
+        <td style="text-align:right;"><b><?php echo 'Rp '.number_format($laba);?></b></td>
     </tr>
 </tfoot>
 </table>
-<table align="center" style="width:800px; border:none;margin-top:5px;margin-bottom:20px;">
-    <tr>
-        <td></td>
-</table>
-<table align="center" style="width:800px; border:none;margin-top:5px;margin-bottom:20px;">
-    <tr>
-        <td align="right">Sleman, <?php echo date('d-M-Y')?></td>
-    </tr>
-    <tr>
-        <td align="right"></td>
-    </tr>
-   
-    <tr>
-    <td><br/><br/><br/><br/></td>
-    </tr>    
-    <tr>
-        <td align="right">( <?php echo $this->session->userdata('nama');?> )</td>
-    </tr>
-    <tr>
-        <td align="center"></td>
-    </tr>
-</table>
-<table align="center" style="width:800px; border:none;margin-top:5px;margin-bottom:20px;">
-    <tr>
-        <th><br/><br/></th>
-    </tr>
-    <tr>
-        <th align="left"></th>
-    </tr>
-</table>
+
 </div>
+ <script src="<?php echo base_url().'assets/js/jquery.js'?>"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo base_url().'assets/dist/js/bootstrap-select.min.js'?>"></script>
+    <script src="<?php echo base_url().'assets/js/bootstrap.min.js'?>"></script>
+    <script src="<?php echo base_url().'assets/DataTables/js/dataTables.bootstrap4.min.js'?>"></script>
+    <script src="<?php echo base_url().'assets/DataTables/js/jquery.dataTables.min.js'?>"></script>
+    <script src="<?php echo base_url().'assets/js/jquery.price_format.min.js'?>"></script>
+
+    <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('#mydata').DataTable({
+                dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+
+            });
+        } );
+    </script>
 </body>
 </html>

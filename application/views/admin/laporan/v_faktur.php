@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/laporan.css')?>"/>
 
 </head>
-<body onload="window.print()">
+<body >
 <div id="laporan" style="width: 150px;">
 <table align="center" style="width:500px; border-bottom:3px double;border-top:none;border-right:none;border-left:none;margin-top:5px;margin-bottom:20px;">
 <!--<tr>
@@ -97,18 +97,20 @@ $no=0;
         </tr>
 
 </table>
-<table align="center" style="width:300px; border-top:double; :none;margin-top:5px;margin-bottom:20px;">
-  <h2 align="center">Terimakasih Telah Berbelanja</h2>
-
-</table>
-
-<table align="center" style="width:700px; border:none;margin-top:5px;margin-bottom:20px;">
+<table align="center" style="width:300px;border: none;margin-top:5px;margin/bottom:20px;">
     <tr>
-        <th><br></th>
-        <th><br></th>
+    <th>
+  <h2 align="center">Terimakasih Telah Berbelanja</h2>
+</th>
+</tr>
+ <tr>
+        <th><p>      </p></th>
+        <th><p>      </p></th>
     </tr>
-  
 </table>
+
+
 </div>
+
 </body>
 </html>
